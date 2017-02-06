@@ -79,7 +79,9 @@ class Squares(object):
 		with open('superbowl.csv', 'rb') as superbowl_csv:
 			 people_reader = csv.DictReader(superbowl_csv)
 			 for row in people_reader:
-			 	self._add_person(Person(row['Name'], row['Bet']))
+			 	person = Person(row['Name'], row['Bet'])
+				self.people.add(person)
+				self.total_pot += person.payment
 
 		# create board from existing
 		self.board = []
